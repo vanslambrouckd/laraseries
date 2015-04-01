@@ -20,7 +20,13 @@ class CreateActorsTable extends Migration {
             $table->text('biography');
             $table->timestamp('birthday');
             $table->string('birthname')->nullable();
+            $table->integer('serie_id')->unsigned();
 			$table->timestamps();
+
+            $table->foreign('serie_id')
+                ->references('id')
+                ->on('series')
+                ->onDelete('cascade');
 		});
 	}
 

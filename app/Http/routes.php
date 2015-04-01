@@ -14,6 +14,7 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('/', 'SeriesController@index');
 Route::get('/series/{id}', 'SeriesController@show');
+Route::get('/series/{id}/actors', 'SeriesController@show_actors');
 
 Route::get('/actors', 'ActorsController@index');
 Route::get('/actors/{id}', 'ActorsController@show');

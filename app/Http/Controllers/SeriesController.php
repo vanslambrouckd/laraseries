@@ -50,7 +50,10 @@ class SeriesController extends Controller {
 	{
 		//
         $serie = Serie::findOrFail($id);
-        return view('series.show', compact('serie'));
+
+        $episodes = $serie->episodes()->orderBy('airdate', 'desc')->get();
+
+        return view('series.show', compact('serie', 'episodes'));
 	}
 
 	/**
@@ -85,5 +88,12 @@ class SeriesController extends Controller {
 	{
 		//
 	}
+
+    public function show_actors($id)
+    {
+        $actors = Serie::findOrFail($id)->actors;
+
+        return view('series.actors', compact('actors'));
+    }
 
 }
