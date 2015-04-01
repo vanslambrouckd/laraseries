@@ -1,6 +1,8 @@
 @extends('app')
 
 @section('content')
+    {!! Breadcrumbs::render('home') !!}
+
     <div class="row-md-12">
         <h1>Series list</h1>
 

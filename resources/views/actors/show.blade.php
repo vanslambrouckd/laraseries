@@ -1,7 +1,9 @@
 @extends('app')
 
 @section('content')
-    <a href="{{ action('ActorsController@index') }}">Terug</a>
+
+    <a class="btn btn-primary btn-xs pull-right" href="{{ action('ActorsController@index') }}">&laquo;Terug</a>
+
 
     <h1>{{ $actor->firstname }} {{ $actor->lastname }}</h1>
 

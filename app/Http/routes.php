@@ -11,10 +11,25 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-Route::get('/', 'SeriesController@index');
-Route::get('/series/{id}', 'SeriesController@show');
-Route::get('/series/{id}/actors', 'SeriesController@show_actors');
+//Route::get('/', 'SeriesController@index');
+/*
+ * routes moeten naam hebben voor breadcrumb plugin
+ */
+Route::get('/', [
+        'as' => 'home',
+        'uses' => 'SeriesController@index'
+    ]
+);
+
+Route::get('/series/{id}', [
+        'as' => 'series_detail',
+        'uses' => 'SeriesController@show'
+    ]
+);
+Route::get('/series/{id}/actors', [
+    'as' => 'series_actors',
+    'uses' => 'SeriesController@show_actors'
+]);
 
 Route::get('/actors', 'ActorsController@index');
 Route::get('/actors/{id}', 'ActorsController@show');

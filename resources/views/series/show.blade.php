@@ -1,9 +1,8 @@
 @extends('app')
 
 @section('content')
-    <div class="row">
+    {!! Breadcrumbs::render('series_detail') !!}
 
-    </div>
     <div class="clearfix">
         <a class="btn btn-primary btn-xs pull-right" href="{{ action('SeriesController@index') }}">&laquo;Terug</a>
         <h1>{{ $serie->title }}</h1>
