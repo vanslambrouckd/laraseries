@@ -14,4 +14,8 @@ class Serie extends Model {
     {
         return $this->hasMany('\App\Actor');
     }
+
+    public function genres(){
+        return $this->belongsToMany('\App\Genre');
+    }
 }

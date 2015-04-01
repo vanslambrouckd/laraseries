@@ -104,7 +104,7 @@ He moved to New York, working in Off-Broadway productions, appearing in TV comme
         Genre::create([
             'genre' => 'Avontuur'
         ]);
-        Genre::create([
+        $komedie = Genre::create([
             'genre' => 'Komedie'
         ]);
         Genre::create([
@@ -114,7 +114,18 @@ He moved to New York, working in Off-Broadway productions, appearing in TV comme
             'genre' => 'Misdaad'
         ]);
 
-        Serie::
+        //big bang theory met genre komedie linken
+        $komedie = \App\Genre::where('genre', '=', 'komedie')->first();
+        $actie = \App\Genre::where('genre', '=', 'Actie')->first();
+
+        $serie = Serie::where('title', '=', 'The big bang Theory')->first();
+        $serie->genres()->attach($komedie);
+
+        //big bang theory met genre komedie linken
+        $serie = Serie::where('title', '=', 'Breaking bad')->first();
+        $serie->genres()->attach($komedie);
+        $serie->genres()->attach($actie);
+
     }
 
 }
