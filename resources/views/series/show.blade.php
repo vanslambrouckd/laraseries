@@ -16,6 +16,12 @@
     </div>
 
 
+@if (count(@$serie->genres))
+    Genres:
+    @foreach ($serie->genres as $genre)
+    {{ $genre->genre }},
+    @endforeach
+@endif
 
     <h2>Episode list</h2>
     @if (count($episodes))

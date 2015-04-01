@@ -51,8 +51,8 @@ class SeriesController extends Controller {
 	{
 		//
         $serie = Serie::findOrFail($id);
-
         $episodes = $serie->episodes()->orderBy('airdate', 'desc')->get();
+
 
         return view('series.show', compact('serie', 'episodes'));
 	}

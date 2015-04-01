@@ -28,3 +28,11 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+/*
+// Display all SQL executed in Eloquent
+Event::listen('illuminate.query', function($query)
+{
+    var_dump($query);
+});
+*/
