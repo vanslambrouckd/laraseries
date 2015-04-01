@@ -1,6 +1,10 @@
-<h1>Actors list</h1>
+@extends('app')
 
-@foreach ($actors as $actor)
+@section('content')
+    <h1>Actors list</h1>
 
-    <a href="{{ action('ActorsController@show', $actor->id) }}">{{ $actor->firstname }} {{ $actor->lastname }}</a>
-@endforeach
+    @foreach ($actors as $actor)
+
+        <a href="{{ action('ActorsController@show', $actor->id) }}">{{ $actor->firstname }} {{ $actor->lastname }}</a>
+    @endforeach
+@endsection

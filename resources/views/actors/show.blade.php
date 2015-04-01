@@ -1,9 +1,13 @@
-<a href="{{ action('ActorsController@index') }}">Terug</a>
+@extends('app')
 
-<h1>{{ $actor->firstname }} {{ $actor->lastname }}</h1>
+@section('content')
+    <a href="{{ action('ActorsController@index') }}">Terug</a>
 
-{{ $actor->biography }}
+    <h1>{{ $actor->firstname }} {{ $actor->lastname }}</h1>
 
-{{ $actor->birthname }}
+    {{ $actor->biography }}
 
-{{ $actor->birthday }}
+    {{ $actor->birthname }}
+
+    {{ $actor->birthday }}
+@endsection

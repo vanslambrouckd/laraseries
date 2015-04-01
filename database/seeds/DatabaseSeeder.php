@@ -2,6 +2,7 @@
 
 use App\Actor;
 use App\Episode;
+use App\Genre;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Serie;
@@ -28,6 +29,11 @@ class DatabaseSeeder extends Seeder {
         DB::table('episodes')->truncate();
         DB::table('actors')->truncate();
         */
+        $serie = Serie::create([
+            'title' => 'Breaking bad',
+            'teaser' => 'When an unassuming high school chemistry teacher discovers he has a rare form of lung cancer, he decides to team up with a former student and create a top of the line crystal meth in a used RV, to provide for his family once he is gone.',
+            'description' => 'When an unassuming high school chemistry teacher discovers he has a rare form of lung cancer, he decides to team up with a former student and create a top of the line crystal meth in a used RV, to provide for his family once he is gone.'
+        ]);
 
 
         $serie = Serie::create([
@@ -91,6 +97,24 @@ class DatabaseSeeder extends Seeder {
 He moved to New York, working in Off-Broadway productions, appearing in TV commercials and in one episode of Ed (2000) before landing a recurring role in Judging Amy (1999) in 2004.',
             'serie_id' => $serie->id
         ]);
+
+        Genre::create([
+        'genre' => 'Actie'
+        ]);
+        Genre::create([
+            'genre' => 'Avontuur'
+        ]);
+        Genre::create([
+            'genre' => 'Komedie'
+        ]);
+        Genre::create([
+            'genre' => 'Thriller'
+        ]);
+        Genre::create([
+            'genre' => 'Misdaad'
+        ]);
+
+        Serie::
     }
 
 }
