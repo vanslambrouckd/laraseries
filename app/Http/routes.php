@@ -30,6 +30,7 @@ Route::get('/series/{id}/actors', [
     'as' => 'series_actors',
     'uses' => 'SeriesController@show_actors'
 ]);
+Route::get('/series/{serie_id}/actors/{id}', 'SeriesController@show_actor');
 
 Route::get('/actors', 'ActorsController@index');
 Route::get('/actors/{id}', 'ActorsController@show');

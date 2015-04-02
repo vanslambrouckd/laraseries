@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Actor;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -92,9 +93,16 @@ class SeriesController extends Controller {
 
     public function show_actors($id)
     {
-        $actors = Serie::findOrFail($id)->actors;
+        $serie = Serie::findOrFail($id);
 
-        return view('series.actors', compact('actors'));
+        return view('series.actors', compact('serie'));
+    }
+
+    public function show_actor($serie_id, $actor_id){
+
+        $actor = Actor::findOrFail($actor_id);
+        $serie = $actor->serie;
+        return view('series.actor', compact('actor', 'serie'));
     }
 
 }

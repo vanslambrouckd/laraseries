@@ -33,7 +33,8 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Browse</a></li>
+					<li><a href="{{ url('/') }}">Series</a></li>
+                    <li><a href="{{ action('ActorsController@index') }}">Acteurs</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

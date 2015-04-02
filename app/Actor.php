@@ -10,4 +10,7 @@ class Actor extends Model {
 
     protected $presenter = '\App\ActorPresenter';
 
+    public function serie(){
+        return $this->belongsTo('App\Serie');
+    }
 }
