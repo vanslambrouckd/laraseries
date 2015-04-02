@@ -11,29 +11,35 @@
 |
 */
 
-//Route::get('/', 'SeriesController@index');
+Route::get('/', 'SeriesController@index');
 /*
  * routes moeten naam hebben voor breadcrumb plugin
  */
-Route::get('/', [
+Route::get('series', [
         'as' => 'home',
         'uses' => 'SeriesController@index'
     ]
 );
 
-Route::get('/series/{id}', [
+Route::get('series/create', 'SeriesController@create');
+Route::post('series', 'SeriesController@store');
+Route::get('series/{id}', [
         'as' => 'series_detail',
         'uses' => 'SeriesController@show'
     ]
 );
-Route::get('/series/{id}/actors', [
+Route::get('series/{id}/edit', 'SeriesController@edit');
+Route::delete('series/{id}', 'SeriesController@destroy');
+Route::patch('series/{id}', 'SeriesController@update');
+
+Route::get('series/{id}/actors', [
     'as' => 'series_actors',
     'uses' => 'SeriesController@show_actors'
 ]);
-Route::get('/series/{serie_id}/actors/{id}', 'SeriesController@show_actor');
+Route::get('series/{serie_id}/actors/{id}', 'SeriesController@show_actor');
 
-Route::get('/actors', 'ActorsController@index');
-Route::get('/actors/{id}', 'ActorsController@show');
+Route::get('actors', 'ActorsController@index');
+Route::get('actors/{id}', 'ActorsController@show');
 
 Route::get('home', 'HomeController@index');
 

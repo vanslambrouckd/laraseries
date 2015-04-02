@@ -145,7 +145,9 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
-        'DaveJamesMiller\Breadcrumbs\ServiceProvider'
+        'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+        'Illuminate\Html\HtmlServiceProvider',
+        'Laracasts\Flash\FlashServiceProvider'
 
 	],
 
@@ -195,7 +197,11 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-        'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade'
+        'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
+
+        'Form'  => 'Illuminate\Html\FormFacade',
+        'Html'  => 'Illuminate\Html\HtmlFacade',
+        'Flash' => 'Laracasts\Flash\Flash'
 
 	],
 

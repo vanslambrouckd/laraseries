@@ -5,7 +5,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Serie;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Session;
+
+//use Illuminate\Http\Request;
+//use Request;
 
 class SeriesController extends Controller {
 
@@ -16,9 +21,14 @@ class SeriesController extends Controller {
 	 */
 	public function index()
 	{
-		//
+        //Session::flash('flash_message', Carbon::create());
+        //Session::flash('flash_message_important', true);
 
-        $series = Serie::all();
+        //flash()->error(Carbon::create());
+        //flash()->overlay('info', 'TItel');
+        //flash('fdjqskl');
+
+        $series = Serie::orderBy('title', 'asc')->get();
         return view('series.index', compact('series'));
 	}
 
@@ -30,16 +40,29 @@ class SeriesController extends Controller {
 	public function create()
 	{
 		//
+        return view('series.create');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return Response
+     */
+	public function store(Request $request)
 	{
-		//
+        $this->validate($request, [
+           'title' => 'required|min:3',
+            'teaser' => 'required',
+            'description' => 'required',
+            'airdate' => 'required|date|date_format:d/m/Y'
+        ]);
+
+        $serie = Serie::create($request->all());
+        //$serie->save();
+
+        flash()->success('De serie werd succesvol toegevoegd.'); //meer info? flashnotifier.php (custom package composer require laracasts/flash)
+        return redirect('series');
 	}
 
 	/**
@@ -66,7 +89,8 @@ class SeriesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $serie = Serie::findOrFail($id);
+        return view('series.edit', compact('serie'));
 	}
 
 	/**
@@ -75,9 +99,12 @@ class SeriesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$serie = Serie::findOrFail($id);
+        $serie->update($request->all());
+
+        return redirect('series');
 	}
 
 	/**
@@ -89,6 +116,8 @@ class SeriesController extends Controller {
 	public function destroy($id)
 	{
 		//
+
+        dd('destroy');
 	}
 
     public function show_actors($id)

@@ -34,6 +34,8 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Series</a></li>
+                    <li><a href="{{ action('SeriesController@create') }}">Serie toevoegen</a></li>
+
                     <li><a href="{{ action('ActorsController@index') }}">Acteurs</a></li>
 				</ul>
 
@@ -55,6 +57,8 @@
 	</nav>
 
 	<div class="container">
+	    @include('flash::message')
+
     	@yield('content')
 	</div>
 
@@ -62,5 +66,10 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	<script>
+        $('#flash-overlay-modal').modal();
+	    //$('div.alert').not('.alert-important').delay(1500).slideUp();
+	</script>
 </body>
 </html>
