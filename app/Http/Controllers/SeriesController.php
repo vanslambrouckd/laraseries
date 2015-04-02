@@ -4,6 +4,7 @@ use App\Actor;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\SerieRequest;
 use App\Serie;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -49,8 +50,11 @@ class SeriesController extends Controller {
      * @param Request $request
      * @return Response
      */
-	public function store(Request $request)
+	public function store(SerieRequest $request)
 	{
+        /*
+         * methode 1: validatie in de controller
+         */
         $this->validate($request, [
            'title' => 'required|min:3',
             'teaser' => 'required',
@@ -93,14 +97,18 @@ class SeriesController extends Controller {
         return view('series.edit', compact('serie'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id, Request $request)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @param SerieRequest $request
+     * @return Response
+     */
+	public function update($id, SerieRequest $request)
 	{
+        /*
+         * methode 2: validatie via request class
+         */
 		$serie = Serie::findOrFail($id);
         $serie->update($request->all());
 
