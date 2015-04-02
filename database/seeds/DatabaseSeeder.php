@@ -6,6 +6,7 @@ use App\Genre;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Serie;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder {
 
@@ -32,14 +33,14 @@ class DatabaseSeeder extends Seeder {
         $serie = Serie::create([
             'title' => 'Breaking bad',
             'teaser' => 'When an unassuming high school chemistry teacher discovers he has a rare form of lung cancer, he decides to team up with a former student and create a top of the line crystal meth in a used RV, to provide for his family once he is gone.',
-            'description' => 'When an unassuming high school chemistry teacher discovers he has a rare form of lung cancer, he decides to team up with a former student and create a top of the line crystal meth in a used RV, to provide for his family once he is gone.'
+            'description' => 'When an unassuming high school chemistry teacher discovers he has a rare form of lung cancer, he decides to team up with a former student and create a top of the line crystal meth in a used RV, to provide for his family once he is gone.',
         ]);
 
 
         $serie = Serie::create([
             'title' => 'Game of thrones',
             'teaser' => 'Een eeuwenoude machtsstrijd barst los in het land waar de zomers decennia duren en de winters een leven lang kunnen aanslepen. Twee machtige geslachten - de regerende Baratheons en de verbannen Targaryens - maken zich op om de IJzeren Troon te claimen en de Zeven Koninkrijken van Westeros onder hun controle te krijgen. Maar in een tijdperk waarin verraad, lust, intriges en bovennatuurlijke krachten hoogtij vieren, zal hun dodelijke kat-en-muisspelletje onvoorziene en verreikende gevolgen hebben. Achter een eeuwenoude, gigantische muur van ijs in het uiterste noorden van Westeros maakt een kille vijand zich immers op om het land onder de voet te lopen. Gebaseerd op de bestseller fantasyreeks "A Song of Ice and Fire" van George R.R. Martin. ',
-            'description' => 'Een eeuwenoude machtsstrijd barst los in het land waar de zomers decennia duren en de winters een leven lang kunnen aanslepen. Twee machtige geslachten - de regerende Baratheons en de verbannen Targaryens - maken zich op om de IJzeren Troon te claimen en de Zeven Koninkrijken van Westeros onder hun controle te krijgen. Maar in een tijdperk waarin verraad, lust, intriges en bovennatuurlijke krachten hoogtij vieren, zal hun dodelijke kat-en-muisspelletje onvoorziene en verreikende gevolgen hebben. Achter een eeuwenoude, gigantische muur van ijs in het uiterste noorden van Westeros maakt een kille vijand zich immers op om het land onder de voet te lopen. Gebaseerd op de bestseller fantasyreeks "A Song of Ice and Fire" van George R.R. Martin. '
+            'description' => 'Een eeuwenoude machtsstrijd barst los in het land waar de zomers decennia duren en de winters een leven lang kunnen aanslepen. Twee machtige geslachten - de regerende Baratheons en de verbannen Targaryens - maken zich op om de IJzeren Troon te claimen en de Zeven Koninkrijken van Westeros onder hun controle te krijgen. Maar in een tijdperk waarin verraad, lust, intriges en bovennatuurlijke krachten hoogtij vieren, zal hun dodelijke kat-en-muisspelletje onvoorziene en verreikende gevolgen hebben. Achter een eeuwenoude, gigantische muur van ijs in het uiterste noorden van Westeros maakt een kille vijand zich immers op om het land onder de voet te lopen. Gebaseerd op de bestseller fantasyreeks "A Song of Ice and Fire" van George R.R. Martin. ',
         ]);
 
         Actor::create([
@@ -47,7 +48,9 @@ class DatabaseSeeder extends Seeder {
             'lastname' => 'Headey',
             'birthname' => '',
             'biography' => 'Lena Headey is a British actress, she was born in Bermuda, to parents from Yorkshire, England, where she was also raised. She is the daughter of Sue and John Headey, a police officer. Headey is best known for her appearances in The Brothers Grimm (2005), Possession (2002), and The Remains of the Day (1993). Headey stars as Queen Gorgo, a heroic Spartan woman in the period film 300 (2006), by director Zack Snyder.',
-            'serie_id' => $serie->id
+            'serie_id' => $serie->id,
+            'slug' => Str::slug('Lena Headey')
+
         ]);
 
         Episode::create([
@@ -55,7 +58,7 @@ class DatabaseSeeder extends Seeder {
             'teaser' => 'Ned Stark, Lord of Winterfell learns that his mentor, Jon Arryn, has died and that King Robert is on his way north to offer Ned Arryn’s position as the King’s Hand. Across the Narrow Sea in Pentos, Viserys Targaryen plans to wed his sister Daenerys to the nomadic Dothraki warrior leader, Khal Drogo to forge an alliance to take the throne.',
             'description' => 'Ned Stark, Lord of Winterfell learns that his mentor, Jon Arryn, has died and that King Robert is on his way north to offer Ned Arryn’s position as the King’s Hand. Across the Narrow Sea in Pentos, Viserys Targaryen plans to wed his sister Daenerys to the nomadic Dothraki warrior leader, Khal Drogo to forge an alliance to take the throne.',
             'airdate' => \Carbon\Carbon::create(2011,4, 17),
-            'serie_id' => $serie->id
+            'serie_id' => $serie->id,
         ]);
 
         Episode::create([
@@ -93,7 +96,8 @@ class DatabaseSeeder extends Seeder {
             'lastname' => 'Galecki',
             'birthname' => 'John Mark Galecki',
             'biography' => "John Mark Galecki was born in Belgium where his dad was stationed while serving in the U.S. Air Force. When he was 3 years old, his family moved to Chicago, Illinois, where he grew up along with his sister Allison (1980) and brother Nick (1982). His father then became a teacher for blind veterans in a VA hospital outside of Chicago. When Galecki was 16, his father died in an accident.",
-            'serie_id' => $serie->id
+            'serie_id' => $serie->id,
+            'slug' => Str::slug('Johnny Galecki')
         ]);
 
         Actor::create([
@@ -103,7 +107,8 @@ class DatabaseSeeder extends Seeder {
             'biography' => 'Having grown up in Houston, and its northern suburb of Spring, he made his first stage appearance in a school play at the age of 6. Parsons then went on to study theater at the University of Houston. From there he won a place on a two-year Masters course in classical theater at the University of San Diego/The Old Globe Theater, graduating in 2001.
 
 He moved to New York, working in Off-Broadway productions, appearing in TV commercials and in one episode of Ed (2000) before landing a recurring role in Judging Amy (1999) in 2004.',
-            'serie_id' => $serie->id
+            'serie_id' => $serie->id,
+            'slug' => Str::slug('Jim Parsons')
         ]);
 
         Genre::create([

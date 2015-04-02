@@ -12,7 +12,9 @@
 */
 
 Route::get('/', 'SeriesController@index');
+
 /*
+ * series
  * routes moeten naam hebben voor breadcrumb plugin
  */
 Route::get('series', [
@@ -23,7 +25,7 @@ Route::get('series', [
 
 Route::get('series/create', 'SeriesController@create');
 Route::post('series', 'SeriesController@store');
-Route::get('series/{id}', [
+Route::get('series/{series}', [
         'as' => 'series_detail',
         'uses' => 'SeriesController@show'
     ]
@@ -38,14 +40,19 @@ Route::get('series/{id}/actors', [
 ]);
 Route::get('series/{serie_id}/actors/{id}', 'SeriesController@show_actor');
 
+/*
+ * actors
+ */
 Route::get('actors', 'ActorsController@index');
-Route::get('actors/{id}', 'ActorsController@show');
+Route::get('actors/{id}/edit', 'ActorsController@edit');
+Route::patch('actors/{id}', 'ActorsController@update');
+Route::get('actors/{slug}', 'ActorsController@show');
 
 Route::get('home', 'HomeController@index');
 
-
-
-
+/*
+ * authentication
+ */
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

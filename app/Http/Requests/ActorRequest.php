@@ -1,8 +1,9 @@
 <?php namespace App\Http\Requests;
 
+use App\Actor;
 use App\Http\Requests\Request;
 
-class SerieRequest extends Request {
+class ActorRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -21,11 +22,10 @@ class SerieRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
-            'title' => 'required|min:3',
-            'teaser' => 'required',
-            'description' => 'required'
-            //'airdate' => 'required|date|date_format:d/m/Y'
+        return [
+			'firstname' => 'required|min:3',
+			'lastname' => 'required|min:3',
+            'slug' => 'required|unique:actors,slug,'.$this->input('id')
 		];
 	}
 

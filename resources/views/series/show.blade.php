@@ -7,7 +7,7 @@
         <a class="btn btn-primary btn-xs pull-right" href="{{ action('SeriesController@index') }}">&laquo;Terug</a>
         <h1>{{ $serie->title }}</h1>
 
-        Airdate: {{ $serie->airdate->format('d/m/Y') }}
+        Airdate: {{ $serie->airdate }}
 
         <p>
         {{ $serie->description }}

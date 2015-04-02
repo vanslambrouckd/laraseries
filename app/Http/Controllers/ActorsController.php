@@ -4,6 +4,7 @@ use App\Actor;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\ActorRequest;
 use Illuminate\Http\Request;
 
 class ActorsController extends Controller {
@@ -46,10 +47,10 @@ class ActorsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug)
 	{
-		//
-        $actor = Actor::findOrFail($id);
+        //$actor = Actor::findOrFail($id);
+        $actor = Actor::where('slug', $slug)->first();
         return view('actors.show', compact('actor'));
 	}
 
@@ -61,18 +62,25 @@ class ActorsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $actor = Actor::findOrFail($id);
+
+        return view('actors.edit', compact('actor'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @param ActorRequest $request
+     * @return Response
+     */
+	public function update($id, ActorRequest $request)
 	{
-		//
+        $actor = Actor::findOrFail($id);
+        $actor->update($request->all());
+
+        flash()->success('De acteur werd succesvol gewijzigd');
+		return redirect('actors');
 	}
 
 	/**

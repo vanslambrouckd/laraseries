@@ -36,8 +36,8 @@ class CreateGenresTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('genres');
         Schema::drop('genre_serie');
+        Schema::drop('genres');
 	}
 
 }

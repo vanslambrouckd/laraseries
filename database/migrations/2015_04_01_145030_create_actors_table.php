@@ -21,6 +21,7 @@ class CreateActorsTable extends Migration {
             $table->timestamp('birthday');
             $table->string('birthname')->nullable();
             $table->integer('serie_id')->unsigned();
+            $table->string('slug')->unique();
 			$table->timestamps();
 
             $table->foreign('serie_id')

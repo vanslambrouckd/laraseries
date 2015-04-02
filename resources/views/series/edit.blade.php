@@ -24,7 +24,7 @@
 
     <div class="form-group">
         {!! Form::label('airdate', 'Uitzenddatum:') !!}
-        {!! Form::input('date', 'airdate', $serie->airdate->format('d/m/Y'), ['class' => 'form-control']) !!}
+        {!! Form::input('date', 'airdate', $serie->airdate, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">

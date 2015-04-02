@@ -9,7 +9,12 @@
        <ul class="list-group">
        @foreach ($actors as $actor)
            <li class="list-group-item">
-               <a href="{{ action('ActorsController@show', $actor->id) }}">{{ $actor->present()->fullName() }}</a>
+                <div class="pull-right">
+                    <a class="btn btn-xs btn-primary" href="{{ action('ActorsController@edit', $actor->id) }}"><span class="glyphicon glyphicon-pencil"></span>wijzig</a>
+                    <a class="btn btn-xs btn-danger" href="#"><span class="glyphicon glyphicon-trash"></span>verwijder</a>
+                </div>
+
+               <a href="{{ action('ActorsController@show', $actor->slug) }}">{{ $actor->present()->fullName() }}</a>
            </li>
        @endforeach
        </ul>

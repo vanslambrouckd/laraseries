@@ -38,10 +38,8 @@ class Serie extends Model {
         $this->attributes['airdate'] = Carbon::createFromFormat('d/m/Y', $date);
     }
 
-    /*
     public function getAirdateAttribute($date)
     {
         return Carbon::parse($date)->format('d/m/Y');
     }
-    */
 }

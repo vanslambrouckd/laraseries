@@ -69,17 +69,19 @@ class SeriesController extends Controller {
         return redirect('series');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+    /**
+     * Route model binding (zie app\Providers\RouteServiceProvider
+     *
+     * @param Serie $serie
+     * @internal param int $id
+     * @return Response
+     */
+	public function show(Serie $serie)
 	{
 		//
-        $serie = Serie::findOrFail($id);
+        //$serie = Serie::findOrFail($id);
         $episodes = $serie->episodes()->orderBy('airdate', 'desc')->get();
+        //TODO: kijken waarom protected $dates['airdate'] niet werkt (carbon) met route model binding)
 
 
         return view('series.show', compact('serie', 'episodes'));
@@ -94,6 +96,7 @@ class SeriesController extends Controller {
 	public function edit($id)
 	{
         $serie = Serie::findOrFail($id);
+
         return view('series.edit', compact('serie'));
 	}
 

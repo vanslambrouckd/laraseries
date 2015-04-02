@@ -22,9 +22,23 @@ class RouteServiceProvider extends ServiceProvider {
 	 */
 	public function boot(Router $router)
 	{
-		parent::boot($router);
+        parent::boot($router);
+        /*
+         * indien route model binding niet werkt,
+         *  moet je php artisan optimize --force uitvoeren
+         *
+         * ondertaande zort dat je SeriesController\show(Serie $serie) kan uitvoeren
+         * ipv id door te geven
+         */
 
-		//
+        $router->model('series', 'App\Serie'); //find($id)
+
+        //indien je iets anders dan find via id wil:
+        /*
+        $router->bind('articles', function($id) {
+            return \App\Article::published()->findOrFail($id);
+        });
+        */
 	}
 
 	/**
