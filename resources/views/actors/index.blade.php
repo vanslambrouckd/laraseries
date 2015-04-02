@@ -7,8 +7,13 @@
 
     <h1>Actors list</h1>
 
-    @foreach ($actors as $actor)
-
-        <a href="{{ action('ActorsController@show', $actor->id) }}">{{ $actor->firstname }} {{ $actor->lastname }}</a>
-    @endforeach
+    @if (count($actors))
+        <ul class="list-group">
+        @foreach ($actors as $actor)
+            <li class="list-group-item">
+                <a href="{{ action('ActorsController@show', $actor->id) }}">{{ $actor->present()->fullName() }}</a>
+            </li>
+        @endforeach
+        </ul>
+    @endif
 @endsection

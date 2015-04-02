@@ -8,9 +8,13 @@
         <h1>Acteurs</h1>
 
         @if (count($actors))
+            <ul>
             @foreach ($actors as $actor)
-                {{ $actor->firstname }} {{ $actor->lastname }}
+                <li>
+                    <a href="{{ action('ActorsController@show', $actor->id) }}">{{ $actor->present()->fullName() }}</a>
+                </li>
             @endforeach
+            </ul>
         @else
             Geen acteurs gevonden
         @endif
